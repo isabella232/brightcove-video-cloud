@@ -3,8 +3,8 @@ var BCL = {};
 
 (function ($) {
 //brightcove.wordpress = { 
-var singlePlayerTemplate = "<script type=\"text/javascript\" src=\"http://admin.brightcove.com/js/BrightcoveExperiences.js\"></script><div style=\"display:none\"></div><object id=\"myExperienceVideo\" class=\"BrightcoveExperience singlePlayer\"><param name=\"bgcolor\" value=\"#FFFFFF\" /><param name=\"wmode\" value=\"transparent\" /><param name=\"width\" value=\"{{width}}\" /><param name=\"height\" value=\"{{height}}\" /><param name=\"playerID\" value=\"{{playerID}}\" /><param name=\"isVid\" value=\"true\" /><param name=\"isUI\" value=\"true\" /><param name=\"dynamicStreaming\" value=\"true\" /><param name=\"@videoPlayer\" value=\"{{videoID}}\" /><param name='includeAPI' value='true' /><param name='templateReadyHandler' value='BCL.onTemplateReadyVideo' /><param name='templateErrorHandler' value='BCL.onTemplateErrorVideo' /></object><script type=\"text/javascript\">brightcove.createExperiences();</script>";
-var playlistPlayerTemplate = "<script type=\"text/javascript\" src=\"http://admin.brightcove.com/js/BrightcoveExperiences.js\"></script><div style=\"display:none\"></div><object id=\"myExperiencePlaylist\" class=\"BrightcoveExperience playlistPlayer\"><param name=\"bgcolor\" value=\"#FFFFFF\" /><param name=\"wmode\" value=\"transparent\" /><param name=\"width\" value=\"{{width}}\" /><param name=\"height\" value=\"{{height}}\" /><param name=\"playerKey\" value=\"{{playerKey}}\" /><param name=\"isVid\" value=\"true\" /><param name=\"isUI\" value=\"true\" /><param name=\"dynamicStreaming\" value=\"true\" /><param name=\"@playlistTabs\" value=\"{{playlistID}}\" /><param name=\"@videoList\" value=\"{{playlistID}}\" /><param name=\"@playlistCombo\" value=\"{{playlistID}}\" /><param name='includeAPI' value='true' /><param name='templateReadyHandler' value='BCL.onTemplateReadyVideo' /><param name='templateErrorHandler' value='BCL.onTemplateErrorVideo' /></object><script type=\"text/javascript\">brightcove.createExperiences();</script>";
+var singlePlayerTemplate = "<script type=\"text/javascript\" src=\"//admin.brightcove.com/js/BrightcoveExperiences.js\"></script><div style=\"display:none\"></div><object id=\"myExperienceVideo\" class=\"BrightcoveExperience singlePlayer\"><param name=\"bgcolor\" value=\"#FFFFFF\" /><param name=\"wmode\" value=\"transparent\" /><param name=\"width\" value=\"{{width}}\" /><param name=\"height\" value=\"{{height}}\" /><param name=\"playerID\" value=\"{{playerID}}\" /><param name=\"isVid\" value=\"true\" /><param name=\"isUI\" value=\"true\" /><param name=\"dynamicStreaming\" value=\"true\" /><param name=\"@videoPlayer\" value=\"{{videoID}}\" /><param name='includeAPI' value='true' /><param name='templateReadyHandler' value='BCL.onTemplateReadyVideo' /><param name='templateErrorHandler' value='BCL.onTemplateErrorVideo' /></object><script type=\"text/javascript\">brightcove.createExperiences();</script>";
+var playlistPlayerTemplate = "<script type=\"text/javascript\" src=\"//admin.brightcove.com/js/BrightcoveExperiences.js\"></script><div style=\"display:none\"></div><object id=\"myExperiencePlaylist\" class=\"BrightcoveExperience playlistPlayer\"><param name=\"bgcolor\" value=\"#FFFFFF\" /><param name=\"wmode\" value=\"transparent\" /><param name=\"width\" value=\"{{width}}\" /><param name=\"height\" value=\"{{height}}\" /><param name=\"playerKey\" value=\"{{playerKey}}\" /><param name=\"isVid\" value=\"true\" /><param name=\"isUI\" value=\"true\" /><param name=\"dynamicStreaming\" value=\"true\" /><param name=\"@playlistTabs\" value=\"{{playlistID}}\" /><param name=\"@videoList\" value=\"{{playlistID}}\" /><param name=\"@playlistCombo\" value=\"{{playlistID}}\" /><param name='includeAPI' value='true' /><param name='templateReadyHandler' value='BCL.onTemplateReadyVideo' /><param name='templateErrorHandler' value='BCL.onTemplateErrorVideo' /></object><script type=\"text/javascript\">brightcove.createExperiences();</script>";
 
 
 playerDataPlaylist = {
@@ -265,7 +265,7 @@ seeAllPlaylists = function(pageNumber) {
     token = $('#bc-api-key').val();
     /*Create URL that is called to search for videos*/
     var url= [
-      "http://api.brightcove.com/services/library&command=find_all_playlists",
+      "https://api.brightcove.com/services/library&command=find_all_playlists",
       "&token=", encodeURIComponent(token),
       '&page_size=25',
       '&page_number=',encodeURIComponent(pageNumber),
@@ -434,7 +434,7 @@ getAllVideos = function (pageNumber)
     token = $('#bc-api-key').val();
     /*Create URL that is called to search for videos*/
     var url= [
-      "http://api.brightcove.com/services/library&command=find_all_videos",
+      "https://api.brightcove.com/services/library&command=find_all_videos",
       "&token=", encodeURIComponent(token),
       '&page_size=25',
       '&page_number=',encodeURIComponent(pageNumber),
@@ -526,7 +526,7 @@ searchForVideos = function (pageNumber) {
     token = $('#bc-api-key').val();
     /*Create URL that is called to search for videos*/
     var url= [
-      "http://api.brightcove.com/services/library&command=search_videos",
+      "//api.brightcove.com/services/library&command=search_videos",
       "&token=", encodeURIComponent(token),
       "&any=search_text:", encodeURIComponent(searchParams),
       "&any=custom_fields:", encodeURIComponent(searchParams),

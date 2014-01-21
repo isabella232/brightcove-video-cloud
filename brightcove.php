@@ -63,11 +63,7 @@ function add_brightcove_script() {
 
 function add_jquery_scripts() {
 	wp_enqueue_script( 'jquery' );
-
 	wp_enqueue_script( 'jquery-ui-core' );
-
-	wp_register_style('jqueryStyle', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/smoothness/jquery-ui.css');
-	wp_enqueue_style( 'jqueryStyle');
 }
 
 function add_validation_scripts() {
