@@ -21,7 +21,6 @@ add_action('admin_menu', 'brightcove_menu');
 add_action( 'admin_init', 'register_brightcove_settings' );
 
 function brightcove_menu() {
-
 	wp_deregister_script( 'brightcove_admin_script' );
 	wp_register_script( 'brightcove_admin_script', '/wp-content/plugins/brightcove-video-cloud/admin/brightcove_admin.js');
 	wp_enqueue_script( 'brightcove_admin_script');
@@ -41,9 +40,6 @@ function brightcove_menu() {
 	wp_deregister_script('jqueryPlaceholder');
 	wp_register_script( 'jqueryPlaceholder', '/wp-content/plugins/brightcove-video-cloud/jQueryPlaceholder/jQueryPlaceholder.js');
 	wp_enqueue_script( 'jqueryPlaceholder');
-
-
-
 }
 
 function brightcove_menu_render() {
