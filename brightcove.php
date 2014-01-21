@@ -1,21 +1,15 @@
 <?php
-/**
- * @package Brightcove Video Cloud
- * @version 1.1
- */
 /*
-Plugin Name: Brightcove Video Cloud
-Plugin URL: 
-Description: An easy to use plugin that inserts Brightcove Video into your Wordpress site. 
-Author: Brightcove
-Version: 1.1
-Author URI: 
-*/
+ * Plugin Name: Brightcove Video Cloud
+ * Plugin URL:
+ * Description: An easy to use plugin that inserts Brightcove Video into your Wordpress site.
+ * Author: Brightcove
+ * Version: 1.1
+ * Author URI:
+ */
 require dirname( __FILE__ ) . '/admin/brightcove_admin.php';
 require dirname( __FILE__ ) . '/brightcove_shortcode.php';
 
-//Nessesary to fix wordpress bug where wp_get_current_user is undefined
-//require_once(ABSPATH."wp-includes/pluggable.php");
 
 /************************Upload Media Tab ***************************/
 
