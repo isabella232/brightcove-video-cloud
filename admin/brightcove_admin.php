@@ -22,23 +22,23 @@ add_action( 'admin_init', 'register_brightcove_settings' );
 
 function brightcove_menu() {
 	wp_deregister_script( 'brightcove_admin_script' );
-	wp_register_script( 'brightcove_admin_script', '/wp-content/plugins/brightcove-video-cloud/admin/brightcove_admin.js');
+	wp_register_script( 'brightcove_admin_script', WP_PLUGIN_URL.'/brightcove-video-cloud/admin/brightcove_admin.js');
 	wp_enqueue_script( 'brightcove_admin_script');
 
-	wp_register_style( 'brightcove_menu_style', '/wp-content/plugins/brightcove-video-cloud/admin/brightcove_admin.css');
+	wp_register_style( 'brightcove_menu_style', WP_PLUGIN_URL.'/brightcove-video-cloud/admin/brightcove_admin.css');
 	wp_enqueue_style( 'brightcove_menu_style' );
 	add_menu_page(__('Brightcove Settings'), __('Brightcove'), 'manage_options', 'brightcove_menu', 'brightcove_menu_render', WP_PLUGIN_URL.'/brightcove-video-cloud/admin/bc_icon.png' );
 
 	wp_deregister_script('jQueryValidate');
-	wp_register_script( 'jQueryValidate', '/wp-content/plugins/brightcove-video-cloud/jQueryValidation/jquery.validate.min.js');
+	wp_register_script( 'jQueryValidate', WP_PLUGIN_URL.'/brightcove-video-cloud/jQueryValidation/jquery.validate.min.js');
 	wp_enqueue_script( 'jQueryValidate' );
 
 	wp_deregister_script('jQueryValidateAddional');
-	wp_register_script( 'jQueryValidateAddional', '/wp-content/plugins/brightcove-video-cloud/jQueryValidation/additional-methods.min.js');
+	wp_register_script( 'jQueryValidateAddional', WP_PLUGIN_URL.'/brightcove-video-cloud/jQueryValidation/additional-methods.min.js');
 	wp_enqueue_script( 'jQueryValidateAddional');
 
 	wp_deregister_script('jqueryPlaceholder');
-	wp_register_script( 'jqueryPlaceholder', '/wp-content/plugins/brightcove-video-cloud/jQueryPlaceholder/jQueryPlaceholder.js');
+	wp_register_script( 'jqueryPlaceholder', WP_PLUGIN_URL.'/brightcove-video-cloud/jQueryPlaceholder/jQueryPlaceholder.js');
 	wp_enqueue_script( 'jqueryPlaceholder');
 }
 

@@ -56,53 +56,39 @@ function add_all_scripts() {
 	add_dynamic_brightcove_api_script();
 }
 
-function add_brightcove_script() {	
-wp_deregister_script( 'brightcove_script' );
-wp_register_script( 'brightcove_script', '/wp-content/plugins/brightcove-video-cloud/js/BrightcoveExperiences.js', array(), null, false);
-wp_enqueue_script( 'brightcove_script' );
+function add_brightcove_script() {
+	wp_register_script( 'brightcove_script', WP_PLUGIN_URL.'/brightcove-video-cloud/js/BrightcoveExperiences.js', array(), null, false);
+	wp_enqueue_script( 'brightcove_script' );
 }
 
 function add_jquery_scripts() {
-  wp_deregister_script('jquery');
-  wp_register_script( 'jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js');
-  wp_enqueue_script( 'jquery' );
+	wp_enqueue_script( 'jquery' );
 
-  wp_deregister_script('jquery-ui-core');
-  wp_register_script( 'jquery-ui-core', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js');
-  wp_enqueue_script( 'jquery-ui-core' );
+	wp_enqueue_script( 'jquery-ui-core' );
 
-  wp_register_style('jqueryStyle', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/smoothness/jquery-ui.css');
-  wp_enqueue_style( 'jqueryStyle');
-  
-  /*  wp_deregister_script('jquery-ui-core');
-  wp_register_script( 'jquery-ui-core', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js');
-  wp_enqueue_script( 'jquery-ui-core' );
-
-  wp_register_style('jqueryStyle', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/smoothness/jquery-ui.css');
-  wp_enqueue_style( 'jqueryStyle');*/
-
+	wp_register_style('jqueryStyle', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/smoothness/jquery-ui.css');
+	wp_enqueue_style( 'jqueryStyle');
 }
 
-function add_validation_scripts()
-{
-  wp_deregister_script('jqueryPlaceholder');
-  wp_register_script( 'jqueryPlaceholder', '/wp-content/plugins/brightcove-video-cloud/jQueryPlaceholder/jQueryPlaceholder.js');
-  wp_enqueue_script( 'jqueryPlaceholder');
+function add_validation_scripts() {
+	wp_deregister_script('jqueryPlaceholder');
+	wp_register_script( 'jqueryPlaceholder', WP_PLUGIN_URL.'/brightcove-video-cloud/jQueryPlaceholder/jQueryPlaceholder.js');
+	wp_enqueue_script( 'jqueryPlaceholder');
 
-  wp_deregister_script('jquery-validate');
-  wp_register_script( 'jquery-validate', '/wp-content/plugins/brightcove-video-cloud/jQueryValidation/jquery.validate.min.js');
-  wp_enqueue_script( 'jquery-validate' );
+	wp_deregister_script('jquery-validate');
+	wp_register_script( 'jquery-validate', WP_PLUGIN_URL.'/brightcove-video-cloud/jQueryValidation/jquery.validate.min.js');
+	wp_enqueue_script( 'jquery-validate' );
 
-  wp_deregister_script('jquery-validat-addional');
-  wp_register_script( 'jquery-validate-addional', '/wp-content/plugins/brightcove-video-cloud/jQueryValidation/additional-methods.min.js');
-  wp_enqueue_script( 'jquery-validate-addional' );
+	wp_deregister_script('jquery-validat-addional');
+	wp_register_script( 'jquery-validate-addional', WP_PLUGIN_URL.'/brightcove-video-cloud/jQueryValidation/additional-methods.min.js');
+	wp_enqueue_script( 'jquery-validate-addional' );
 }
 
 
-function add_dynamic_brightcove_api_script() {	
-wp_deregister_script( 'dynamic_brightcove_script' );
-wp_register_script( 'dynamic_brightcove_script', '/wp-content/plugins/brightcove-video-cloud/dynamic_brightcove.js');
-wp_enqueue_script( 'dynamic_brightcove_script' );
+function add_dynamic_brightcove_api_script() {
+	wp_deregister_script( 'dynamic_brightcove_script' );
+	wp_register_script( 'dynamic_brightcove_script', WP_PLUGIN_URL.'/brightcove-video-cloud/dynamic_brightcove.js');
+	wp_enqueue_script( 'dynamic_brightcove_script' );
 }
 
 //global variables 
@@ -180,28 +166,28 @@ add_action( 'init', function() {
 		<input type='hidden' id='bc-default-height-playlist' name='bc-default-height-playlist' value='".$bcGlobalVariables['defaultHeightPlaylist']."' >
 		</div>";
 
+	// @TODO: fix the / root url assumption
 	$bcGlobalVariables['loadingImg'] = "<img class='loading-img' src='/wp-includes/js/thickbox/loadingAnimation.gif' />";
 });
 
 
 
 function set_shortcode_button ($playlistOrVideo, $buttonText) {
+	if ($playlistOrVideo == 'playlist') {
+		$id='playlist-shortcode-button';
+	} else {
+		$id='video-shortcode-button';
+	}
 
-if ($playlistOrVideo == 'playlist') {
-	$id='playlist-shortcode-button';
-} else {
-	$id='video-shortcode-button';
-}
-
-?>
+	?>
 	<div class='media-item no-border insert-button-container'>
       <button disabled='disabled' id='<?php echo $id; ?>' class='aligncenter button'/><?php echo $buttonText; ?></button>
-    </div> <?php
-	
+    </div>
+	<?php
 } 
 
 //TODO Pass in as map
-function add_player_settings($playlistOrVideo, $buttonText) { 
+function add_player_settings( $playlistOrVideo, $buttonText ) {
 	GLOBAL $bcGlobalVariables;
 	if ($playlistOrVideo == 'playlist') {
 		$setting = '-playlist';
@@ -281,7 +267,7 @@ function add_preview_area ($playlistOrVideo) {
 		$otherClass='video';
 	}
 
-?>
+	?>
 	<div class='<?php echo $class; ?> media-item no-border player-preview preview-container hidden'>
       <h3 class='preview-header'>Video Preview</h3>
       <table>
