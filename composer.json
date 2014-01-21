@@ -1,0 +1,12 @@
+{
+    "name": "tomjn/brightcove-video-cloud",
+    "description": "A superior version of the official plugin with fixes",
+    "minimum-stability": "dev",
+    "license": "GPL-20+",
+    "authors": [
+        {
+            "name": "Tom J Nowell",
+            "email": "contact@tomjn.com"
+        }
+    ]
+}
