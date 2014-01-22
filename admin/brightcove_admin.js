@@ -21,6 +21,6 @@ jQuery(document).ready(function() {
 		}
 	}
 	//Fix for IE for placeholder
-  	jQuery(":input[placeholder]").placeholder();
+  	/*jQuery(":input[placeholder]").placeholder();*/
 	jQuery('#brightcove_menu').validate();
 });

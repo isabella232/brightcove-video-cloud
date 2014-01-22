@@ -3,10 +3,11 @@ var BCL = {};
 
 (function ($) {
 //brightcove.wordpress = { 
-var singlePlayerTemplate = "<script type=\"text/javascript\" src=\"//admin.brightcove.com/js/BrightcoveExperiences.js\"></script><div style=\"display:none\"></div><object id=\"myExperienceVideo\" class=\"BrightcoveExperience singlePlayer\"><param name=\"bgcolor\" value=\"#FFFFFF\" /><param name=\"wmode\" value=\"transparent\" /><param name=\"width\" value=\"{{width}}\" /><param name=\"height\" value=\"{{height}}\" /><param name=\"playerID\" value=\"{{playerID}}\" /><param name=\"isVid\" value=\"true\" /><param name=\"isUI\" value=\"true\" /><param name=\"dynamicStreaming\" value=\"true\" /><param name=\"@videoPlayer\" value=\"{{videoID}}\" /><param name='includeAPI' value='true' /><param name='templateReadyHandler' value='BCL.onTemplateReadyVideo' /><param name='templateErrorHandler' value='BCL.onTemplateErrorVideo' /></object><script type=\"text/javascript\">brightcove.createExperiences();</script>";
-var playlistPlayerTemplate = "<script type=\"text/javascript\" src=\"//admin.brightcove.com/js/BrightcoveExperiences.js\"></script><div style=\"display:none\"></div><object id=\"myExperiencePlaylist\" class=\"BrightcoveExperience playlistPlayer\"><param name=\"bgcolor\" value=\"#FFFFFF\" /><param name=\"wmode\" value=\"transparent\" /><param name=\"width\" value=\"{{width}}\" /><param name=\"height\" value=\"{{height}}\" /><param name=\"playerKey\" value=\"{{playerKey}}\" /><param name=\"isVid\" value=\"true\" /><param name=\"isUI\" value=\"true\" /><param name=\"dynamicStreaming\" value=\"true\" /><param name=\"@playlistTabs\" value=\"{{playlistID}}\" /><param name=\"@videoList\" value=\"{{playlistID}}\" /><param name=\"@playlistCombo\" value=\"{{playlistID}}\" /><param name='includeAPI' value='true' /><param name='templateReadyHandler' value='BCL.onTemplateReadyVideo' /><param name='templateErrorHandler' value='BCL.onTemplateErrorVideo' /></object><script type=\"text/javascript\">brightcove.createExperiences();</script>";
-
-
+var singlePlayerTemplate = "<div style=\"display:none\"></div><object id=\"myExperienceVideo\" class=\"BrightcoveExperience singlePlayer\"><param name=\"bgcolor\" value=\"#FFFFFF\" /><param name=\"wmode\" value=\"transparent\" /><param name=\"width\" value=\"{{width}}\" /><param name=\"height\" value=\"{{height}}\" /><param name=\"playerID\" value=\"{{playerID}}\" /><param name=\"isVid\" value=\"true\" /><param name=\"isUI\" value=\"true\" /><param name=\"dynamicStreaming\" value=\"true\" /><param name=\"@videoPlayer\" value=\"{{videoID}}\" /><param name='includeAPI' value='true' /></object><script type=\"text/javascript\">brightcove.createExperiences();</script>";
+var playlistPlayerTemplate = "<div style=\"display:none\"></div><object id=\"myExperiencePlaylist\" class=\"BrightcoveExperience playlistPlayer\"><param name=\"bgcolor\" value=\"#FFFFFF\" /><param name=\"wmode\" value=\"transparent\" /><param name=\"width\" value=\"{{width}}\" /><param name=\"height\" value=\"{{height}}\" /><param name=\"playerKey\" value=\"{{playerKey}}\" /><param name=\"isVid\" value=\"true\" /><param name=\"isUI\" value=\"true\" /><param name=\"dynamicStreaming\" value=\"true\" /><param name=\"@playlistTabs\" value=\"{{playlistID}}\" /><param name=\"@videoList\" value=\"{{playlistID}}\" /><param name=\"@playlistCombo\" value=\"{{playlistID}}\" /><param name='includeAPI' value='true' /></object><script type=\"text/javascript\">brightcove.createExperiences();</script>";
+//<script type=\"text/javascript\" src=\"//admin.brightcove.com/js/BrightcoveExperiences.js\"></script>
+// <param name='templateReadyHandler' value='BCL.onTemplateReadyVideo' />
+// <param name='templateErrorHandler' value='BCL.onTemplateErrorVideo' />
 playerDataPlaylist = {
    	"playerKey" : "",
     "width" : "", 
@@ -311,7 +312,7 @@ displayPlaylists = function (pResponse) {
 
 	//Binds the preview playlists function to the Add Playlists button
 	$('#playlist-preview').bind('click', function () {
-		previewPlaylist();
+		//previewPlaylist();
 		$('#playlist-preview').remove();
 	});
 
@@ -390,6 +391,7 @@ playlistResults = function (pResponse) {
 }
 
 previewPlaylist = function () {
+    return;
 	showSettings('playlists');
 	var playlists = [];
 	//Loop through the list of playlists and get all the checked ones
@@ -482,7 +484,7 @@ displayPagedVideoSearchResults = function (pResponse, allOrSearch) {
 		$('#bc-video-search-video').append(html).removeClass('disable');
 	}
 	$('#video-page-'+pageNumber).find('.bc-video').bind('click', function() {
-			previewVideo($(this).data('videoid'));
+			//previewVideo($(this).data('videoid'));
 
 		}); 
 	$('.prev-page').bind('click', function() {
@@ -526,7 +528,7 @@ searchForVideos = function (pageNumber) {
     token = $('#bc-api-key').val();
     /*Create URL that is called to search for videos*/
     var url= [
-      "//api.brightcove.com/services/library&command=search_videos",
+      "https//api.brightcove.com/services/library&command=search_videos",
       "&token=", encodeURIComponent(token),
       "&any=search_text:", encodeURIComponent(searchParams),
       "&any=custom_fields:", encodeURIComponent(searchParams),
@@ -584,7 +586,8 @@ videoResults = function (pResponse) {
 	}
 }
 
-previewVideo = function (videoID) {	
+previewVideo = function (videoID) {
+    return;
 	$('.video-page').remove();
 	showSettings('video');
 	generateHTMLForVideo();
@@ -629,6 +632,7 @@ BCL.onTemplateErrorPlaylist = function (event) {
 }
  
 BCL.onTemplateReadyVideo = function(event) {  
+   //return;
     player = brightcove.api.getExperience("myExperienceVideo");
     // get a reference to the video player
     videoPlayer = player.getModule(brightcove.api.modules.APIModules.VIDEO_PLAYER);
@@ -639,7 +643,8 @@ BCL.onTemplateReadyVideo = function(event) {
     });
   }
 
-  BCL.onTemplateReadyPlaylist = function(event) {  
+  BCL.onTemplateReadyPlaylist = function(event) {
+    //return;
     player = brightcove.api.getExperience("myExperiencePlaylist");
     // get a reference to the video player
     videoPlayer = player.getModule(brightcove.api.modules.APIModules.VIDEO_PLAYER);
@@ -939,10 +944,7 @@ $(function () {
 	$('.no-error').css('visibility','visible');
 	
 	//Fix for IE for placeholder
-    $(":input[placeholder]").placeholder();
-
-
-
+    /*$(":input[placeholder]").placeholder();*/
 
 });
 

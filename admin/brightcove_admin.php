@@ -36,10 +36,6 @@ function brightcove_menu() {
 	wp_deregister_script('jQueryValidateAddional');
 	wp_register_script( 'jQueryValidateAddional', WP_PLUGIN_URL.'/brightcove-video-cloud/jQueryValidation/additional-methods.min.js');
 	wp_enqueue_script( 'jQueryValidateAddional');
-
-	wp_deregister_script('jqueryPlaceholder');
-	wp_register_script( 'jqueryPlaceholder', WP_PLUGIN_URL.'/brightcove-video-cloud/jQueryPlaceholder/jQueryPlaceholder.js');
-	wp_enqueue_script( 'jqueryPlaceholder');
 }
 
 function brightcove_menu_render() {

@@ -28,7 +28,7 @@ if (isset($height)) {
 }
 
 
-$html = '<script type="text/javascript" src="https://admin.brightcove.com/js/BrightcoveExperiences.js"></script><div style="display:none"></div>
+$html = '<script type="text/javascript" src="//admin.brightcove.com/js/BrightcoveExperiences.js"></script><div style="display:none"></div>
 <object id="'.rand().'" class="BrightcoveExperience">
   <param name="bgcolor" value="#FFFFFF" />
   <param name="wmode" value="transparent" />
