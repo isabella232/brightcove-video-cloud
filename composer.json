@@ -1,12 +1,17 @@
 {
-    "name": "cftp/brightcove-video-cloud",
-    "description": "A superior version of the official plugin with fixes",
-    "minimum-stability": "dev",
-    "license": "GPL-20+",
-    "authors": [
-        {
-            "name": "Tom J Nowell",
-            "email": "contact@tomjn.com"
-        }
-    ]
+	"name": "cftp/brightcove-video-cloud",
+	"description": "A superior version of the official plugin with fixes",
+	"minimum-stability": "dev",
+	"type"       : "wordpress-plugin",
+	"license"    : "GPL-2.0+",
+	"authors": [
+		{
+			"name"    : "Code For The People Ltd",
+			"homepage": "http://www.codeforthepeople.com/"
+		},
+		{
+			"name"   : "Tom J Nowell",
+			"email"  : "contact@tomjn.com"
+		}
+	]
 }
